@@ -6,6 +6,8 @@ category: 省思
 excerpt: 為什麼在五十歲開始寫這個部落格。
 excerptEn: Why I started this blog at fifty.
 draft: true
+cover: /images/sydney-opera-house.jpg
+coverAlt: 文昇在雪梨歌劇院前 / Wensheng at the Sydney Opera House
 ---
 
 今年，我五十歲了。

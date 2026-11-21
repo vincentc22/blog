@@ -19,6 +19,7 @@ const d = post.data.date.toISOString().slice(0, 10);
       <span class="chip">{post.data.category} <span class="en">{catEn[post.data.category]}</span></span>
       {post.data.draft && <span class="chip draft">草稿 <span class="en">Draft</span></span>}
     </div>
+    {post.data.cover && <figure class="cover"><img src={post.data.cover} alt={post.data.coverAlt ?? ""} width="1400" height="1076" /></figure>}
     <div class="prose"><Content /></div>
     <a class="back" href="/">← 回到首頁 <span class="en">Back to home</span></a>
   </article>

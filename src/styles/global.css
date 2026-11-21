@@ -130,3 +130,11 @@ footer.site .wrap { padding-top: 20px; padding-bottom: 32px; font-size: 14px; co
   nav.main { gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+img { max-width: 100%; height: auto; display: block; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--accent-soft); }
+figure { margin: 0; }
+figure.cover { margin: 0 0 36px; }
+figure.cover img { border-radius: 8px; width: 100%; }
+figure.portrait { margin: 32px 0; max-width: 360px; }
+figure.portrait img { border-radius: 8px; }
