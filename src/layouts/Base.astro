@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+interface Props { title?: string; description?: string; nav?: "home" | "about"; }
+const { title, description = "五十，重新看見。記錄生活、想法與省思。Seeing anew at fifty.", nav = "home" } = Astro.props;
+const fullTitle = title ? `${title} · 文昇筆記` : "文昇筆記 Wensheng's Notes";
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet" />
+  <script is:inline>
+    try { var l = localStorage.getItem("wsn-lang"); if (l) document.documentElement.dataset.lang = l; } catch (e) {}
+  </script>
+</head>
+<body data-lang="both">
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="zh">文昇筆記</span><span class="en">Wensheng's Notes</span></a>
+      <nav class="main" aria-label="主選單">
+        <a href="/" aria-current={nav === "home" ? "page" : undefined}>首頁 <span class="en">Home</span></a>
+        <a href="/about/" aria-current={nav === "about" ? "page" : undefined}>關於 <span class="en">About</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="語言 Language">
+        <button type="button" data-lang="both" aria-pressed="true">中英</button>
+        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <slot />
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>© {new Date().getFullYear()} 文昇筆記 <span class="en">Wensheng's Notes</span></span>
+      <span>與 Claude 一起寫作與維護 <span class="en">Written and maintained with Claude</span></span>
+    </div>
+  </footer>
+  <script is:inline>
+    (function () {
+      function setLang(lang) {
+        document.body.setAttribute("data-lang", lang);
+        document.querySelectorAll(".lang-toggle button").forEach(function (b) {
+          b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+        });
+        try { localStorage.setItem("wsn-lang", lang); } catch (e) {}
+      }
+      document.querySelectorAll(".lang-toggle button").forEach(function (b) {
+        b.addEventListener("click", function () { setLang(b.dataset.lang); });
+      });
+      var saved = document.documentElement.dataset.lang;
+      if (saved === "zh" || saved === "en" || saved === "both") setLang(saved);
+    })();
+  </script>
+</body>
+</html>

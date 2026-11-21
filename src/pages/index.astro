@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const catEn = { "生活": "Life", "想法": "Thoughts", "省思": "Reflections" };
+const fmt = (d: Date) => d.toISOString().slice(0, 10).replaceAll("-", ".");
+---
+<Base nav="home">
+  <div class="hero">
+    <h1 class="zh-only">文昇筆記</h1>
+    <p class="en-title en">Wensheng's Notes</p>
+    <p class="tagline zh-only">五十，重新看見。記錄生活、想法與省思。</p>
+    <p class="tagline-en en">Seeing anew at fifty. Notes on life, thoughts, and reflections.</p>
+  </div>
+  <h2 class="section-label">文章 <span class="en">Posts</span></h2>
+  <ul class="post-list">
+    {posts.map((p) => (
+      <li>
+        <a href={`/posts/${p.id}/`}>
+          <span class="meta">
+            <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
+            <span class="chip">{p.data.category} <span class="en">{catEn[p.data.category]}</span></span>
+            {p.data.draft && <span class="chip draft">草稿 <span class="en">Draft</span></span>}
+          </span>
+          <span class="t zh-only">{p.data.title}</span>
+          <span class="t-en en">{p.data.titleEn}</span>
+          <span class="ex zh-only">{p.data.excerpt}</span>
+          <span class="ex en">{p.data.excerptEn}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>
