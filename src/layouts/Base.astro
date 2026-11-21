@@ -21,7 +21,7 @@ const fullTitle = title ? `${title} · 文昇筆記` : "文昇筆記 Wensheng's 
     try { var l = localStorage.getItem("wsn-lang"); if (l) document.documentElement.dataset.lang = l; } catch (e) {}
   </script>
 </head>
-<body data-lang="both">
+<body data-lang="zh">
   <header class="site">
     <div class="wrap">
       <a class="brand" href="/"><span class="zh">文昇筆記</span><span class="en">Wensheng's Notes</span></a>
@@ -30,8 +30,8 @@ const fullTitle = title ? `${title} · 文昇筆記` : "文昇筆記 Wensheng's 
         <a href="/about/" aria-current={nav === "about" ? "page" : undefined}>關於 <span class="en">About</span></a>
       </nav>
       <div class="lang-toggle" role="group" aria-label="語言 Language">
-        <button type="button" data-lang="both" aria-pressed="true">中英</button>
-        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+        <button type="button" data-lang="both" aria-pressed="false">中英</button>
+        <button type="button" data-lang="zh" aria-pressed="true">中</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
     </div>
