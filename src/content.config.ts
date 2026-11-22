@@ -16,4 +16,15 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const diary = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/diary" }),
+  schema: z.object({
+    date: z.coerce.date(),
+    title: z.string().optional(),
+    titleEn: z.string().optional(),
+    photo: z.string().optional(),
+    photoAlt: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, diary };

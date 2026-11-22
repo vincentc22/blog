@@ -138,3 +138,13 @@ figure.cover { margin: 0 0 36px; }
 figure.cover img { border-radius: 8px; width: 100%; }
 figure.portrait { margin: 32px 0; max-width: 360px; }
 figure.portrait img { border-radius: 8px; }
+
+.diary-list { display: grid; gap: 0; margin-top: 8px; }
+.entry { padding: 32px 0; border-bottom: 1px solid var(--line); }
+.entry-date { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 16px; font-variant-numeric: tabular-nums; }
+.entry-date time { font-size: 15px; color: var(--accent); letter-spacing: 0.06em; }
+.entry-date .t { font-size: 20px; font-weight: 600; }
+.entry-date .t .en { font-family: var(--font-en); font-style: italic; font-weight: 400; color: var(--muted); font-size: 16px; margin-left: 8px; }
+.entry figure { margin: 0 0 18px; }
+.entry figure img { border-radius: 8px; width: 100%; }
+.entry .prose > :last-child, .entry .prose > .pair:last-child { margin-bottom: 0; }

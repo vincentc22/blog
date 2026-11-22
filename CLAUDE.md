@@ -33,3 +33,22 @@ Rules:
 - Headings use `中文 | English`.
 - Keep the owner's voice; English is a faithful, natural translation, not a rewrite.
 - Run `npm run build` before pushing.
+
+## 日記 / Diary
+Short entries at `/diary/`, newest first, all on one page. Create `src/content/diary/YYYY-MM-DD.md` (add `-2` etc. for a second entry the same day):
+
+```md
+---
+date: YYYY-MM-DD
+title: 可選標題        # optional
+titleEn: Optional title # optional
+photo: /images/diary-YYYY-MM-DD-<name>.jpg  # optional
+photoAlt: 中文描述 / English description
+---
+
+一兩句中文。
+
+One or two English sentences.
+```
+
+Photos: save to `public/images/`, resize to max 1400px, JPEG quality ~82. Crop or blur identifiable bystanders (especially children) before publishing.

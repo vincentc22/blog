@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+const entries = (await getCollection("diary")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const rendered = await Promise.all(entries.map(async (e) => ({ e, Content: (await render(e)).Content })));
+const wk = ["日", "一", "二", "三", "四", "五", "六"];
+const wkEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+---
+<Base title="日記" nav="diary" description="生活的片段，短短幾句。Small moments, in a few lines.">
+  <div class="hero">
+    <h1 class="zh-only">日記</h1>
+    <p class="en-title en">Diary</p>
+    <p class="tagline zh-only">生活的片段，短短幾句。</p>
+    <p class="tagline-en en">Small moments, in a few lines.</p>
+  </div>
+  <div class="diary-list">
+    {rendered.map(({ e, Content }) => {
+      const d = e.data.date;
+      const iso = d.toISOString().slice(0, 10);
+      return (
+        <section class="entry" id={`d-${iso}`}>
+          <p class="entry-date">
+            <time datetime={iso}>{iso.replaceAll("-", ".")} <span class="zh-only">週{wk[d.getUTCDay()]}</span><span class="en"> {wkEn[d.getUTCDay()]}</span></time>
+            {e.data.title && <span class="t">{e.data.title}{e.data.titleEn && <span class="en">{e.data.titleEn}</span>}</span>}
+          </p>
+          {e.data.photo && <figure><img src={e.data.photo} alt={e.data.photoAlt ?? ""} loading="lazy" /></figure>}
+          <div class="prose"><Content /></div>
+        </section>
+      );
+    })}
+  </div>
+</Base>
