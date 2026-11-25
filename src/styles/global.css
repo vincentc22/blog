@@ -153,3 +153,5 @@ figure.portrait img { border-radius: 8px; }
 .prose > ol.en, .prose > ul.en { font-family: var(--font-en); font-size: 16.5px; line-height: 1.7; color: var(--muted); }
 body[data-lang="en"] .prose > .zh { display: none; }
 body[data-lang="en"] .prose > .en { color: var(--ink); font-size: 17.5px; }
+.views { width: 100%; display: flex; }
+.views img { height: 20px; width: auto; }
