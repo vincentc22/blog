@@ -20,7 +20,7 @@ function isEl(node, tag) {
 
 function markParagraphs(parent) {
   for (const child of parent.children || []) {
-    if (isEl(child, "p")) addClass(child, CJK.test(textOf(child)) ? "zh" : "en");
+    if (isEl(child, "p") || isEl(child, "ol") || isEl(child, "ul")) addClass(child, CJK.test(textOf(child)) ? "zh" : "en");
   }
 }
 

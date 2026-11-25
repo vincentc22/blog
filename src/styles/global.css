@@ -148,3 +148,8 @@ figure.portrait img { border-radius: 8px; }
 .entry figure { margin: 0 0 18px; }
 .entry figure img { border-radius: 8px; width: 100%; }
 .entry .prose > :last-child, .entry .prose > .pair:last-child { margin-bottom: 0; }
+.prose > ol, .prose > ul { padding-left: 1.4em; }
+.prose > ol li, .prose > ul li { margin-bottom: 10px; }
+.prose > ol.en, .prose > ul.en { font-family: var(--font-en); font-size: 16.5px; line-height: 1.7; color: var(--muted); }
+body[data-lang="en"] .prose > .zh { display: none; }
+body[data-lang="en"] .prose > .en { color: var(--ink); font-size: 17.5px; }
