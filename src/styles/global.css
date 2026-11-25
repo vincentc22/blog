@@ -160,3 +160,10 @@ figure.artwork img { border-radius: 4px; box-shadow: 0 2px 14px rgba(20, 24, 40,
 figure.artwork figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); }
 figure.artwork figcaption .en { font-family: var(--font-en); }
 body[data-lang="both"] figure.artwork figcaption .en { display: block; }
+figure.artwork { max-width: 680px; }
+figure.artwork img { max-width: 420px; width: 100%; }
+figure.artwork figcaption { font-size: 16px; line-height: 1.8; color: var(--ink); }
+figure.artwork figcaption p { margin: 0 0 14px; }
+figure.artwork figcaption .art-title { font-weight: 600; margin-top: 18px; }
+figure.artwork figcaption p.en { color: var(--muted); font-size: 15.5px; }
+body[data-lang="en"] figure.artwork figcaption p.en { color: var(--ink); }
