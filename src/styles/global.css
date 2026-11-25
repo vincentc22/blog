@@ -155,3 +155,8 @@ body[data-lang="en"] .prose > .zh { display: none; }
 body[data-lang="en"] .prose > .en { color: var(--ink); font-size: 17.5px; }
 .views { width: 100%; display: flex; }
 .views img { height: 20px; width: auto; }
+figure.artwork { margin: 40px 0 8px; max-width: 420px; }
+figure.artwork img { border-radius: 4px; box-shadow: 0 2px 14px rgba(20, 24, 40, 0.15); }
+figure.artwork figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); }
+figure.artwork figcaption .en { font-family: var(--font-en); }
+body[data-lang="both"] figure.artwork figcaption .en { display: block; }
