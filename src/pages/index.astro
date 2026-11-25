@@ -1,34 +1,29 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getCollection } from "astro:content";
-const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const catEn = { "生活": "Life", "想法": "Thoughts", "省思": "Reflections" };
-const fmt = (d: Date) => d.toISOString().slice(0, 10).replaceAll("-", ".");
 ---
 <Base nav="home">
   <div class="hero">
-    <img class="avatar" src="/images/avatar.jpg" alt="文昇 Wensheng" width="96" height="96" />
     <h1 class="zh-only">文昇筆記</h1>
     <p class="en-title en">Wensheng's Notes</p>
     <p class="tagline zh-only">五十，重新看見。記錄生活、想法與省思。</p>
     <p class="tagline-en en">Seeing anew at fifty. Notes on life, thoughts, and reflections.</p>
   </div>
-  <h2 class="section-label">文章 <span class="en">Posts</span></h2>
-  <ul class="post-list">
-    {posts.map((p) => (
-      <li>
-        <a href={`/posts/${p.id}/`}>
-          <span class="meta">
-            <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
-            <span class="chip">{p.data.category} <span class="en">{catEn[p.data.category]}</span></span>
-            {p.data.draft && <span class="chip draft">草稿 <span class="en">Draft</span></span>}
-          </span>
-          <span class="t zh-only">{p.data.title}</span>
-          <span class="t-en en">{p.data.titleEn}</span>
-          <span class="ex zh-only">{p.data.excerpt}</span>
-          <span class="ex en">{p.data.excerptEn}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <figure class="portrait"><img src="/images/portrait.jpg" alt="文昇 Wensheng" width="724" height="1086" /></figure>
+    <div class="prose">
+      <div class="pair">
+        <p class="zh">我是文昇，一名科技研發工程師，住在台灣。2026 年，我五十歲，開始寫這個部落格，記錄生活、想法與省思。</p>
+        <p class="en">I'm Wensheng, a technology R&amp;D engineer living in Taiwan. In 2026, at fifty, I started this blog to record my life, thoughts, and reflections.</p>
+      </div>
+    </div>
+    <figure class="artwork">
+      <img src="/images/matisse-violinist.jpg" alt="馬諦斯〈窗前的小提琴手〉 / Henri Matisse, The Violinist at the Window" width="800" height="1224" loading="lazy" />
+      <figcaption>
+        <p class="art-title zh-only">〈窗前的小提琴手〉，亨利·馬諦斯，1918，巴黎龐畢度中心</p>
+        <p class="art-title en"><i>The Violinist at the Window</i>, Henri Matisse, 1918, Centre Pompidou, Paris</p>
+        <p class="zh-only">1918 年春天，48 歲的馬諦斯剛到法國尼斯不久，一個人住在那裡專心創作，太太和三個孩子留在巴黎。那段時間，他對自己的生活和創作方式做了很深的反省。</p>
+        <p class="en">In the spring of 1918, Matisse, then 48, had only recently arrived in Nice, France. He lived there alone and devoted himself to painting, while his wife and three children stayed in Paris. During this period he reflected deeply on how he lived and how he worked.</p>
+        <p class="zh-only">馬諦斯自己也拉小提琴，這幅畫常被看成他的某種自畫像：一個人背對著我們，面向窗外，用琴聲整理心情。當時一次大戰還沒結束，畫裡有一種孤獨與沉思的氣氛。</p>
+        <p class="en">Matisse played the violin himself, and the painting is often seen as a kind of self-portrait: a lone figure with his back to us, facing the window, sorting out his thoughts through music. The First World War had not yet ended, and the painting carries a mood of solitude and contemplation.</p>
+      </figcaption>
+    </figure>
 </Base>

@@ -4,6 +4,7 @@ Bilingual (Traditional Chinese + English) personal blog, built with Astro 5, dep
 Theme: turning 50 — life (生活), thoughts (想法), reflections (省思). Reply to the owner in Traditional Chinese.
 
 ## 新增文章 / Adding a post
+(Currently no posts and no post pages: the site is Home + Diary only. If the owner asks for articles again, restore `src/pages/posts/[slug].astro` and a list page from git history.)
 Create `src/content/posts/<english-slug>.md`:
 
 ```md

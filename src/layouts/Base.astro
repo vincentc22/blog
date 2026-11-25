@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-interface Props { title?: string; description?: string; nav?: "home" | "diary" | "about"; }
+interface Props { title?: string; description?: string; nav?: "home" | "diary"; }
 const { title, description = "五十，重新看見。記錄生活、想法與省思。Seeing anew at fifty.", nav = "home" } = Astro.props;
 const fullTitle = title ? `${title} · 文昇筆記` : "文昇筆記 Wensheng's Notes";
 ---
@@ -28,7 +28,6 @@ const fullTitle = title ? `${title} · 文昇筆記` : "文昇筆記 Wensheng's 
       <nav class="main" aria-label="主選單">
         <a href="/" aria-current={nav === "home" ? "page" : undefined}>首頁 <span class="en">Home</span></a>
         <a href="/diary/" aria-current={nav === "diary" ? "page" : undefined}>日記 <span class="en">Diary</span></a>
-        <a href="/about/" aria-current={nav === "about" ? "page" : undefined}>關於 <span class="en">About</span></a>
       </nav>
       <div class="lang-toggle" role="group" aria-label="語言 Language">
         <button type="button" data-lang="both" aria-pressed="false">中英</button>
